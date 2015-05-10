@@ -1,3 +1,4 @@
 .DS_Store
 env_log_monitoring/
-.idea/
+.idea/*
+MailingReports/credentials.py
