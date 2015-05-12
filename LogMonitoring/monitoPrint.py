@@ -4,10 +4,8 @@ __author__ = 'alexandre'
 # and also interesting stats
 # monitoPrint will read from the queue the events, analyzing it and then pretty printing on the console
 
-from collections import Counter
 
-
-threshold = 100  # this is the threshold at which the alert will be triggered
+threshold = 40  # this is the threshold at which the alert will be triggered
 
 
 def print_stats(count):
@@ -20,19 +18,17 @@ def print_stats(count):
 
 
 
-def monito_print(count, last_120_requests, alert_state):
+def monito_print(count, last_120_requests, alert):
     """
     :param count: counter, which contains all the request from the last 10s
     :param last_120_request: list containing the request from the last 120 s
-    :param alert_state: bool, representing if we are are notin alert state
-    :return: unit : print on the screen the loggins
+    :param alert: bool, representing if we are are notin alert state
+    :return: unit : print on the screen the logs
     """
-    if alert_state:  # we were in alert state : did we recovered ?
-        if len(last_120_requests) > threshold:  # still alert state
-            print "alert state still on"
-        else:  # we recovered
-            print "alert recovery"
-    else:  # (no alert state)
-        if len(last_120_requests) > threshold:
+    if alert:  # we were in alert state : did we recovered ?
+        if sum(last_120_requests) > threshold:  # we have not recovered
             print "alert state on"
-    print_stats(count)
+        else:
+            print "recovery"
+    print "most common hits last 10 seconds"
+    print_stats(count)  # we print the most common requests from the last 120s
