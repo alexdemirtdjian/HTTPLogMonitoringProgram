@@ -22,23 +22,21 @@ def is_peak_time(t, l):
 
 # the object containing the configuration
 # we generate a new one every single day
-cfg = configFakeLogger.config_fake_logger()
-
-
+cfg = configFakeLogger.ConfigFakeLogger()
 
 
 while True:
     current_time = time.time() % (24*3600)  # we get the number of second of today
     request = singleRequestGenerator.generate_line_request()
-    if is_peak_time(current_time, cfg.peakIntervals):  # we are in peak time
+    if is_peak_time(current_time, cfg.peak_intervals):  # we are in peak time
         log_file = open('access_log', 'a')
         log_file.write(request + "\n")
         log_file.close()
         print(request + "\n")
-        time.sleep(cfg.getTimeOnPeak())  # we wait less time
+        time.sleep(cfg.get_time_on_peak())  # we wait less time
     else:  # we are not in peak time
         log_file = open('access_log', 'a')
         log_file.write(request + "\n")
         log_file.close()
         print(request + "\n")
-        time.sleep(cfg.getTimeOnAverage())
+        time.sleep(cfg.get_time_on_average())

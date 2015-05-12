@@ -41,10 +41,11 @@ second_level = ["stats", "best", "recent", "popular"]
 third_level = [("id" + str(i)) for i in xrange(30)]
 
 dico_site = defaultdict()
-# this dictionnary will contains previous lists (k, v) = (depth, list)
+# this dictionary will contains previous lists (k, v) = (depth, list)
 dico_site[0] = first_level
 dico_site[1] = second_level
 dico_site[2] = third_level
+
 
 def path_generator(n):
     """
@@ -102,7 +103,7 @@ def generate_line_request():
     # we define the current time
     request = Request()
     request.hydrate_client_ip(random.choice(ip_list))
-    request.hydrate_date_request(now.strftime("[%d/%m/%Y:%H:%M:%S +0200]"))
+    request.hydrate_date_request(now.strftime("[%d/%b/%Y:%H:%M:%S +0200]"))
     request.hydrate_path(random.choice(path_list))
     request.hydrate_bytes(random.choice(bytes_list))
 
