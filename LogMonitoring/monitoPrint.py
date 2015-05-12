@@ -4,8 +4,7 @@ __author__ = 'alexandre'
 # and also interesting stats
 # monitoPrint will read from the queue the events, analyzing it and then pretty printing on the console
 
-
-threshold = 40  # this is the threshold at which the alert will be triggered
+from configMonitoring import threshold
 
 
 def print_stats(count):
@@ -15,7 +14,6 @@ def print_stats(count):
     """
     print count.most_common(3)  # we get the most common paths
     print sum(count.values())  # we count all the requests from the last 10 s
-
 
 
 def monito_print(count, last_120_requests, alert):
