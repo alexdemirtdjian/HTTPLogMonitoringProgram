@@ -34,7 +34,7 @@ Installing the program :
 ------------------------
 To manage properly the dependency we will set up a virtualenvironement
 
-* install python on your machine
+* install python 2.7 on your machine (/!\ it won't work on python version <= 2,6 since it uses colletions.Counter() )
 
 * install pip
 `easy_install pip`
