@@ -26,15 +26,19 @@ cfg = configFakeLogger.config_fake_logger()
 
 
 
-with open('access_log', 'a') as log_file:
-    while True:
-        current_time = time.time() % (24*3600)  # we get the number of second of today
-        request = singleRequestGenerator.generate_line_request()
-        if is_peak_time(current_time, cfg.peakIntervals):  # we are in peak time
-            log_file.write(request + "\n")
-            print(request + "\n")
-            time.sleep(cfg.getTimeOnPeak())  # we wait less time
-        else:  # we are not in peak time
-            log_file.write(request + "\n")
-            print(request + "\n")
-            time.sleep(cfg.getTimeOnAverage())
+
+while True:
+    current_time = time.time() % (24*3600)  # we get the number of second of today
+    request = singleRequestGenerator.generate_line_request()
+    if is_peak_time(current_time, cfg.peakIntervals):  # we are in peak time
+        log_file = open('access_log', 'a')
+        log_file.write(request + "\n")
+        log_file.close()
+        print(request + "\n")
+        time.sleep(cfg.getTimeOnPeak())  # we wait less time
+    else:  # we are not in peak time
+        log_file = open('access_log', 'a')
+        log_file.write(request + "\n")
+        log_file.close()
+        print(request + "\n")
+        time.sleep(cfg.getTimeOnAverage())
