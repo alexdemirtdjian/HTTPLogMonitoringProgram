@@ -1,11 +1,37 @@
 __author__ = 'alexandre'
 
-# All the log events will come into the queue to be processed
-# There will be two queues : one containing entries from the last 10 s
-# the other containing the entries with only the datetime, from the last two minutes
+# This file will provide some functions to easily process the request
+# like getting the path of the request or getting the time of the request
 
 import time
 import datetime
+
+
+def find_nth(haystack, needle, n):
+    """
+    find the nth occurrence of needle in haysytack
+    :param haystack: string
+    :param needle: string
+    :param n: int
+    :return: int
+    """
+    start = haystack.find(needle)
+    while start >= 0 and n > 1:
+        start = haystack.find(needle, start+len(needle))
+        n -= 1
+    return start
+
+
+def get_path(req):
+    """
+    return the path of the request
+    :param req: string (request)
+    :return: string (path of the request)
+    """
+    path_pos_begin = find_nth(req, '/', 3) + 1  # we find the beginning of the path
+    number_of_slash = req.count('/')  # we count the number of /
+    path_pos_end = find_nth(req, '/', (number_of_slash-1))  # we find the end of the path
+    return str(req[path_pos_begin:path_pos_end])
 
 
 def get_time(req):
@@ -20,6 +46,17 @@ def get_time(req):
     date = time.strptime(date, "%d/%b/%Y:%H:%M:%S")
     return t - int(datetime.datetime(*date[:6]).strftime('%s'))
 
+
+def encode(l):
+    """
+    encode to utf8 the elem of the list
+    :param l:
+    :return: list
+    """
+    res = []
+    for i in l:
+        res.append(i.encode('utf-8'))
+    return res
 
 
 if __name__ == "__main__":
