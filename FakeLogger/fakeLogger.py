@@ -25,6 +25,11 @@ def is_peak_time(t, l):
 cfg = configFakeLogger.ConfigFakeLogger()
 
 
+# This is the infinite loop of the fakelogger program
+# It retrieve a request with help of singleRequestGenerator
+# It then appends it to the access_log file and print the request on the screen
+# The time between two requests is retrieved from the configFakeLogger file
+# There is 2 types of gap time : one normal, and one short when there is high traffic
 while True:
     current_time = time.time() % (24*3600)  # we get the number of second of today
     request = singleRequestGenerator.generate_line_request()

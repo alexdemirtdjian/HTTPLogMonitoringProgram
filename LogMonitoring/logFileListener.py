@@ -20,6 +20,11 @@ queue_two_minutes = deque()  # a queue containing the last 120s requests
 
 
 def get_size(logfile_path):
+    """
+    return the size of a file
+    :param logfile_path: string
+    :return: int
+    """
     return os.stat(logfile_path).st_size
 
 
@@ -43,14 +48,14 @@ def listen_to_log_file(log_file_path):
     """
 
     # we initialize some variables
-    current_size = get_size(log_file_path)
+    current_size = get_size(log_file_path)  # the size of the log file
     logfile = io.open(log_file_path, 'r')
     logfile.seek(0, 2)  # we go at the eof
     l_buffer = []  # list containing all requests acting as a buffer
     alert_state = False  # the alert state of the program (We start with False)
+    trigger_time = time.strftime("%m-%d %H:%M:%S")  # the last time we entered an alert state (set to now for now)
+    hits_alert = 0  # the number of hits that trigger an alert (set to 0 for now)
     timer = time.time()
-    trigger_time = time.strftime("%m-%d %H:%M:%S")  # the last time we entered an alert state
-    hits_alert = 0  # the number of hits that trigger an alert
     while 1:
 
         lines = logfile.readlines()
@@ -85,6 +90,7 @@ def listen_to_log_file(log_file_path):
 
             monitoPrint.monito_print(counter_ten_seconds, queue_two_minutes, alert_state, trigger_time, hits_alert)
 
+            # we need to put this condition after the print in order to get the recovery message
             if sum(queue_two_minutes) <= monitoPrint.threshold:  # we recovered from alert state
                 alert_state = False
 
