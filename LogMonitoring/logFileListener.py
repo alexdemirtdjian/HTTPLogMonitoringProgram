@@ -36,12 +36,21 @@ def get_size(logfile_path):
 # we reset some variables, like l_buffer or count_ten_seconds
 
 def listen_to_log_file(log_file_path):
+    """
+    The core function : contain an infinite loop that will print continuously logs an alert on the screen
+    :param log_file_path: string
+    :return: unit, print logs and alerts
+    """
+
+    # we initialize some variables
     current_size = get_size(log_file_path)
     logfile = io.open(log_file_path, 'r')
     logfile.seek(0, 2)  # we go at the eof
     l_buffer = []  # list containing all requests acting as a buffer
     alert_state = False  # the alert state of the program (We start with False)
     timer = time.time()
+    trigger_time = time.strftime("%m-%d %H:%M:%S")  # the last time we entered an alert state
+    hits_alert = 0  # the number of hits that trigger an alert
     while 1:
 
         lines = logfile.readlines()
@@ -69,10 +78,12 @@ def listen_to_log_file(log_file_path):
             if len(queue_two_minutes) > 12:  # we have the last 130s requests
                 queue_two_minutes.pop()  # we remove the last element = (the number of requests from 130 and 120s)
 
-            if sum(queue_two_minutes) > monitoPrint.threshold:
+            if sum(queue_two_minutes) > monitoPrint.threshold and (not alert_state):  # we enter in an alert state
                 alert_state = True
+                trigger_time = time.strftime("%m-%d %H:%M:%S")
+                hits_alert = sum(queue_two_minutes)  # the number of hits that triggered the alert
 
-            monitoPrint.monito_print(counter_ten_seconds, queue_two_minutes, alert_state)
+            monitoPrint.monito_print(counter_ten_seconds, queue_two_minutes, alert_state, trigger_time, hits_alert)
 
             if sum(queue_two_minutes) <= monitoPrint.threshold:  # we recovered from alert state
                 alert_state = False
@@ -85,4 +96,4 @@ def listen_to_log_file(log_file_path):
 
 if __name__ == "__main__":
     # print listen_to_log_file("/private/var/log/apache2/access_log")
-    print listen_to_log_file("~/Developer/Python/pycharmProject/HTTPLogMonitoringProgram/FakeLogger/access_log")
+    print listen_to_log_file("/Users/myrtille/Developer/Python/pycharmProject/HTTPLogMonitoringProgram/FakeLogger/access_log")
