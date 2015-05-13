@@ -19,8 +19,8 @@ def print_stats(count):
 def monito_print(count, last_120_requests, alert):
     """
     :param count: counter, which contains all the request from the last 10s
-    :param last_120_request: list containing the request from the last 120 s
-    :param alert: bool, representing if we are are notin alert state
+    :param last_120_requests: list containing the request from the last 120 s
+    :param alert: bool, representing if we are are in alert state
     :return: unit : print on the screen the logs
     """
     if alert:  # we were in alert state : did we recovered ?

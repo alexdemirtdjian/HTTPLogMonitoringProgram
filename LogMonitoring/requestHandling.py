@@ -5,6 +5,7 @@ __author__ = 'alexandre'
 
 import time
 import datetime
+import logFileListener
 
 
 def find_nth(haystack, needle, n):
@@ -61,5 +62,5 @@ def encode(l):
 
 if __name__ == "__main__":
     print get_time('::1 - - [12/May/2015:11:40:06 +0200] "GET /angular/WeatherAngular/app/partials/forecast.html HTTP/1.1" 304 -')
-    print counter_ten_seconds
+    print logFileListener.counter_ten_seconds
     print get_path('::1 - - [12/May/2015:11:40:06 +0200] "GET /angular/WeatherAngular/app/partials/forecast.html HTTP/1.1" 304 -')
