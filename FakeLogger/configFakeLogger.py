@@ -1,6 +1,6 @@
 __author__ = 'alexandre'
 
-# This file will contain config param to the fakeLogging
+# This file will contain config params to the fakeLogging system
 # we will thus be able to generate high traffic on certain period
 
 import random
@@ -19,10 +19,12 @@ class ConfigFakeLogger():
         # intervals of the day when high traffic will be generated
         self.peak_intervals = map(g, self.peak_times)
 
-    def get_time_on_peak(self):
+    @staticmethod
+    def get_time_on_peak():
         return random.uniform(0, 1)  # the time separating two request on peak time
 
-    def get_time_on_average(self):
+    @staticmethod
+    def get_time_on_average():
         return random.uniform(1, 10)  # the average time separating two requests
 
 

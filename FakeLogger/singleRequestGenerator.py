@@ -14,16 +14,18 @@ common_status_code_list = [200, 300, 301, 302, 304, 307, 400, 401, 403, 404, 410
 # this list contain HTTP methods
 http_methods = ["GET", "POST", "PUT", "DELETE"]
 
-# we define here an random ip addresses generator
+
 def ip_generator(n):
     """
-    int -> ip list : return a random ip adress
+    return a list of n random ip addresses
+    :param n: int
+    :return: ip list
     """
-    ip_list = []  # a list containing some random ip adresses
+    ip_list_res = []  # a list containing some random ip addresses
     for i in xrange(n):
         ip = ".".join(map(str, (random.randint(0, 255) for _ in xrange(4))))
-        ip_list.append(ip)
-    return ip_list
+        ip_list_res.append(ip)
+    return ip_list_res
 
 # this list contains some random ip
 ip_list = ip_generator(100)
@@ -35,16 +37,17 @@ bytes_list = [int(random.gauss(mu, sigma)) for _ in xrange(100)]
 
 # we will define some random request from the client
 # we assume we are on the website : http://my.site.com/
-base_level = ["http://my.site1.com", "http://my.site2.com", "http://my.site3.com"]
+base_level = ["my.site1.com"]
 first_level = ["music", "guests", "message", "video", "marks", "notifications", "photos"]
 second_level = ["stats", "best", "recent", "popular"]
 third_level = [("id" + str(i)) for i in xrange(30)]
 
-dico_site = defaultdict()
+dict_site = defaultdict()
 # this dictionary will contains previous lists (k, v) = (depth, list)
-dico_site[0] = first_level
-dico_site[1] = second_level
-dico_site[2] = third_level
+dict_site[0] = base_level
+dict_site[1] = first_level
+dict_site[2] = second_level
+dict_site[3] = third_level
 
 
 def path_generator(n):
@@ -54,11 +57,11 @@ def path_generator(n):
     """
     res = []  # the list containing random urls
     for _ in xrange(n):
-        depth = random.randint(1, 5)  # we generate the depth of the request
+        depth = random.randint(1, 6)  # we generate the depth of the request
         # we increase the probability of deep request
-        url = "/".join([random.choice(dico_site[i]) for i in xrange(min(3, depth))])
+        url = "/".join([random.choice(dict_site[i]) for i in xrange(min(4, depth))])
         method = random.choice(http_methods)
-        res.append(method + " " + url)
+        res.append(method + " " + url + " HTTP/1.1")
     return res
 
 # the list containing random requests from client
