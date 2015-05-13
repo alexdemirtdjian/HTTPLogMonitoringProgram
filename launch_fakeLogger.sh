@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python "FakeLogger/fakeLogger.py"
+screen python "FakeLogger/fakeLogger.py"

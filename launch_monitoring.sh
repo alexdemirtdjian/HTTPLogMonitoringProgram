@@ -1,5 +1,3 @@
 #!/bin/sh
 
-python "LogMonitoring/logFileListener.py"
-
-
+screen python "LogMonitoring/logFileListener.py"

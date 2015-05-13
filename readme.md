@@ -30,11 +30,75 @@ crossed remain visible on the page for historical reasons.
 * Explain how you’d improve on this application design
 
 
+Global layout :
+---------------
+
+Two programs are present :
+- fakeLogger : a program populating a W3C access_log fake file
+- logFileListener : the core program, listening on a log file and monitoring it on a screen
+
+Also present :
+- a canvas for sending mail on a regular basis with graphs
+- Testing files to test the logFileListener on alert and recovery
+
+
+Results on the screen :
+-----------------------
+
+fakeLogger :
+
+```
+165.224.229.204 - - [13/May/2015:21:13:21 +0200] "GET my.site1.com/message/best/id1 HTTP/1.1" 200 3197
+
+209.147.103.35 - - [13/May/2015:21:13:28 +0200] "DELETE my.site1.com/guests/popular HTTP/1.1" 501 3377
+
+105.19.200.136 - - [13/May/2015:21:13:34 +0200] "GET my.site1.com/guests/best HTTP/1.1" 302 3207
+
+185.221.83.183 - - [13/May/2015:21:13:36 +0200] "PUT my.site1.com/message/stats HTTP/1.1" 410 2227
+
+159.150.33.33 - - [13/May/2015:21:13:38 +0200] "DELETE my.site1.com/notifications/best/id5 HTTP/1.1" 503 2301
+
+244.165.189.177 - - [13/May/2015:21:13:43 +0200] "DELETE my.site1.com/video/stats/id6 HTTP/1.1" 304 3742
+
+201.227.53.53 - - [13/May/2015:21:13:44 +0200] "POST my.site1.com/video/popular/id25 HTTP/1.1" 410 2728
+
+107.94.140.200 - - [13/May/2015:21:13:47 +0200] "GET my.site1.com/guests/stats HTTP/1.1" 410 4101
+
+107.94.140.200 - - [13/May/2015:21:13:51 +0200] "PUT my.site1.com/marks/recent HTTP/1.1" 300 4133
+```
+
+logFileListener :
+
+```
+--------------------------------------------------------------
+most common hits last 10 seconds :
+     guests : 1 hit
+total number of hits last 10 seconds :  1
+total number of hits last 2 minutes :  26
+--------------------------------------------------------------
+--------------------------------------------------------------
+most common hits last 10 seconds :
+     message : 1 hit
+     guests : 1 hit
+     marks : 1 hit
+total number of hits last 10 seconds :  3
+total number of hits last 2 minutes :  26
+--------------------------------------------------------------
+--------------------------------------------------------------
+most common hits last 10 seconds :
+     notifications : 1 hit
+total number of hits last 10 seconds :  1
+total number of hits last 2 minutes :  24
+--------------------------------------------------------------
+```
+
+
+
 Installing the program :
 ------------------------
 To manage properly the dependency we will set up a virtualenvironement
 
-* install python 2.7 on your machine (/!\ it won't work on python version <= 2,6 since it uses colletions.Counter() )
+* install python 2.7 on your machine (/!\ it won't work on python version <= 2.6 since it uses collections.Counter( ) )
 
 * install pip
 `easy_install pip`
@@ -50,3 +114,34 @@ To manage properly the dependency we will set up a virtualenvironement
 
 * install all the requirements for the project
 `pip install -r requirements.txt`
+
+
+Possible improvements :
+-----------------------
+
+* demonising the program making it persistent with another way than using screen which is not a clean method
+
+* let the program deduce the threshold with analysing the number of request and
+adjusting it overtime (a bit of machine learning for the program)
+
+* making stats on a precise type of status code like 404 or 500 to see what pages need
+maintenance
+
+* sending email on a daily basis summing up what happened with visual feedback
+(canvas of the files created but not added to the program)
+
+* sending push / sms notifications on critical alerts
+
+* making it available for windows
+
+* colorize the logs to more readable logs
+
+* make stats on the percentage of hits on cache (analyze the 304 status codes)
+
+* analysing location of ip with reverse dns to know from where requests are coming
+
+* stocking in a database the ips and number of requests in order to find potential ip to ban
+
+* making possible to monitor distant files
+
+* make the program handles several logging files
