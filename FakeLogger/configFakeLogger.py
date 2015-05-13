@@ -25,7 +25,7 @@ class ConfigFakeLogger():
 
     @staticmethod
     def get_time_on_average():
-        return random.uniform(1, 10)  # the average time separating two requests
+        return random.uniform(1, 8)  # the average time separating two requests
 
 
 if __name__ == "__main__":

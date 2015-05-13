@@ -30,8 +30,7 @@ def get_path(req):
     :return: string (path of the request)
     """
     path_pos_begin = find_nth(req, '/', 3) + 1  # we find the beginning of the path
-    number_of_slash = req.count('/')  # we count the number of /
-    path_pos_end = find_nth(req, '/', (number_of_slash-1))  # we find the end of the path
+    path_pos_end = find_nth(req, '/', 4)  # we find the end of the path
     return str(req[path_pos_begin:path_pos_end])
 
 

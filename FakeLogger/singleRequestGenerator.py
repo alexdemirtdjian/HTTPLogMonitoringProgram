@@ -57,7 +57,7 @@ def path_generator(n):
     """
     res = []  # the list containing random urls
     for _ in xrange(n):
-        depth = random.randint(1, 6)  # we generate the depth of the request
+        depth = random.randint(3, 6)  # we generate the depth of the request
         # we increase the probability of deep request
         url = "/".join([random.choice(dict_site[i]) for i in xrange(min(4, depth))])
         method = random.choice(http_methods)
@@ -72,7 +72,7 @@ class Request():
     # This class will create Request Object which will
     # represent a single request from a client
 
-    def __init__(self, client_ip = None, date_request = None, path = None, status_code = None, bytes = None):
+    def __init__(self, client_ip=None, date_request=None, path=None, status_code=None, bytes=None):
         self.client_ip = client_ip
         self.date_request = date_request
         self.path = path
