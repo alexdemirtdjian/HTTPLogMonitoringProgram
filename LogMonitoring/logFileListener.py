@@ -12,6 +12,7 @@ from requestHandling import *
 from collections import deque, Counter
 
 import monitoPrint
+import configMonitoring
 
 
 # we define here two global variables
@@ -101,5 +102,4 @@ def listen_to_log_file(log_file_path):
 
 
 if __name__ == "__main__":
-    # print listen_to_log_file("/private/var/log/apache2/access_log")
-    print listen_to_log_file("/Users/myrtille/Developer/Python/pycharmProject/HTTPLogMonitoringProgram/FakeLogger/access_log")
+    print listen_to_log_file(configMonitoring.log_path)
