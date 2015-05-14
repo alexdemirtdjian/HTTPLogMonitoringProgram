@@ -90,6 +90,36 @@ most common hits last 10 seconds :
 total number of hits last 10 seconds :  1
 total number of hits last 2 minutes :  24
 --------------------------------------------------------------
+--------------------------------------------------------------
+/!\ * * * * * * * * * * alert state on * * * * * * * * * * /!\
+High traffic generated an alert - hits = 21, triggered at 05-14 18:51:14
+--------------------------------------------------------------
+most common hits last 10 seconds :
+     notifications : 1 hit
+     music : 1 hit
+     guests : 1 hit
+total number of hits last 10 seconds :  3
+total number of hits last 2 minutes :  26
+--------------------------------------------------------------
+/!\ * * * * * * * * * * alert state on * * * * * * * * * * /!\
+High traffic generated an alert - hits = 21, triggered at 05-14 18:51:14
+--------------------------------------------------------------
+most common hits last 10 seconds :
+total number of hits last 10 seconds :  0
+total number of hits last 2 minutes :  22
+--------------------------------------------------------------
+ + + + + + + + + + + + + recovery + + + + + + + + + + + +
+Alert recovery at 05-14 19:14:04
+--------------------------------------------------------------
+most common hits last 10 seconds :
+total number of hits last 10 seconds :  0
+total number of hits last 2 minutes :  19
+--------------------------------------------------------------
+--------------------------------------------------------------
+most common hits last 10 seconds :
+total number of hits last 10 seconds :  0
+total number of hits last 2 minutes :  18
+--------------------------------------------------------------
 ```
 
 
