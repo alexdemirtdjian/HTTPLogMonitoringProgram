@@ -7,9 +7,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from operator import add
 
+
 # example data
-mu = 100 # mean of distribution
-sigma = 15 # standard deviation of distribution
+mu = 100  # mean of distribution
+sigma = 15  # standard deviation of distribution
 
 err_y = mu + sigma * np.random.randn(25)
 ok_aux = mu + sigma * np.random.randn(25)

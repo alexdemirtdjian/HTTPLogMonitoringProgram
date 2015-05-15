@@ -176,8 +176,11 @@ adjusting it overtime (a bit of machine learning for the program)
 * making stats on a precise type of status code like 404 or 500 to see what pages need
 maintenance
 
-* sending email on a daily basis summing up what happened with visual feedback
+* sending email on a daily basis summing up what happened with visual feedback. We
+can imagine a bar chart with ok and errors requests
 (canvas of the files created but not added to the program)
+
+![Alt text](/img/barChartReport.png?raw=true "Example of bar chart report")
 
 * sending push / sms notifications on critical alerts
 
