@@ -42,7 +42,7 @@ def get_time(req):
     """
     t = int(time.time())
     time_pos = req.find('[') + 1  # we find the position of the date
-    date = req[time_pos:(time_pos+19)]   # we extract the date
+    date = req[time_pos:(time_pos+20)]   # we extract the date
     date = time.strptime(date, "%d/%b/%Y:%H:%M:%S")
     return t - int(datetime.datetime(*date[:6]).strftime('%s'))
 

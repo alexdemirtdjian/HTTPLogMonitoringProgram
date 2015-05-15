@@ -101,5 +101,6 @@ def listen_to_log_file(log_file_path):
             timer = time.time()  # we reset timer to 0
 
 
+
 if __name__ == "__main__":
     print listen_to_log_file(configMonitoring.log_path)
