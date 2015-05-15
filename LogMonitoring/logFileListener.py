@@ -78,6 +78,10 @@ def listen_to_log_file(log_file_path):
 
             # update counter - this counter has the last 10s requests
             counter_ten_seconds.update(map(get_path, l_buffer))  # we update the 10s path requests
+            # we retrieve and count also the status code requests
+            status_code_lst = map(str, map(get_status_code, l_buffer))
+            for i in range(2, 6):
+                counter_ten_seconds[str(i) + "xx"] = len([elem for elem in status_code_lst if elem.startswith(str(i))])
 
             # we update the 120s queue - that has the total requests from the last 120s
             queue_two_minutes.appendleft(len(l_buffer))

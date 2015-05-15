@@ -70,56 +70,62 @@ fakeLogger :
 logFileListener :
 
 ```
---------------------------------------------------------------
+/!\ * * * * * * * * * * * * alert state on * * * * * * * * * * * * /!\
+High traffic generated an alert - hits = 23, triggered at 05-15 16:25:57
+------------------------------------------------------------------------
+hit(s) with status code 2xx :  0
+hit(s) with status code 3xx :  2
+hit(s) with status code 4xx :  0
+hit(s) with status code 5xx :  0
 most common hits last 10 seconds :
-     guests : 1 hit
-total number of hits last 10 seconds :  1
-total number of hits last 2 minutes :  26
---------------------------------------------------------------
---------------------------------------------------------------
-most common hits last 10 seconds :
-     message : 1 hit
-     guests : 1 hit
      marks : 1 hit
-total number of hits last 10 seconds :  3
-total number of hits last 2 minutes :  26
---------------------------------------------------------------
---------------------------------------------------------------
+     photos : 1 hit
+total number of hits last 10 seconds :  4
+total number of hits last 2 minutes :  28
+------------------------------------------------------------------------
+/!\ * * * * * * * * * * * * alert state on * * * * * * * * * * * * /!\
+High traffic generated an alert - hits = 23, triggered at 05-15 16:25:57
+------------------------------------------------------------------------
+hit(s) with status code 2xx :  0
+hit(s) with status code 3xx :  0
+hit(s) with status code 4xx :  2
+hit(s) with status code 5xx :  1
 most common hits last 10 seconds :
-     notifications : 1 hit
-total number of hits last 10 seconds :  1
-total number of hits last 2 minutes :  24
---------------------------------------------------------------
---------------------------------------------------------------
-/!\ * * * * * * * * * * alert state on * * * * * * * * * * /!\
-High traffic generated an alert - hits = 21, triggered at 05-14 18:51:14
---------------------------------------------------------------
-most common hits last 10 seconds :
-     notifications : 1 hit
-     music : 1 hit
-     guests : 1 hit
-total number of hits last 10 seconds :  3
-total number of hits last 2 minutes :  26
---------------------------------------------------------------
-/!\ * * * * * * * * * * alert state on * * * * * * * * * * /!\
-High traffic generated an alert - hits = 21, triggered at 05-14 18:51:14
---------------------------------------------------------------
-most common hits last 10 seconds :
-total number of hits last 10 seconds :  0
-total number of hits last 2 minutes :  22
---------------------------------------------------------------
- + + + + + + + + + + + + recovery + + + + + + + + + + + +
-Alert recovery at 05-14 19:14:04
---------------------------------------------------------------
+     music : 2 hits
+     message : 1 hit
+total number of hits last 10 seconds :  6
+total number of hits last 2 minutes :  31
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+ + + + + + + + + + + + + + + recovery + + + + + + + + + + + + + +
+Alert recovery at 05-15 16:28:17
+------------------------------------------------------------------------
+hit(s) with status code 2xx :  0
+hit(s) with status code 3xx :  0
+hit(s) with status code 4xx :  0
+hit(s) with status code 5xx :  0
 most common hits last 10 seconds :
 total number of hits last 10 seconds :  0
 total number of hits last 2 minutes :  19
---------------------------------------------------------------
---------------------------------------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+hit(s) with status code 2xx :  0
+hit(s) with status code 3xx :  0
+hit(s) with status code 4xx :  0
+hit(s) with status code 5xx :  0
 most common hits last 10 seconds :
 total number of hits last 10 seconds :  0
-total number of hits last 2 minutes :  18
---------------------------------------------------------------
+total number of hits last 2 minutes :  16
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+hit(s) with status code 2xx :  0
+hit(s) with status code 3xx :  0
+hit(s) with status code 4xx :  0
+hit(s) with status code 5xx :  0
+most common hits last 10 seconds :
+total number of hits last 10 seconds :  0
+total number of hits last 2 minutes :  14
+------------------------------------------------------------------------
 ```
 
 

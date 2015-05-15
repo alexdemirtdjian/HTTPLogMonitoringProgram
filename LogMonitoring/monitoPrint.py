@@ -32,17 +32,20 @@ def monito_print(count, last_120_requests, alert, triggered_time, hits_alert):
     """
     if alert:  # we were in alert state : did we recovered ?
         if sum(last_120_requests) > threshold:  # we have not recovered
-            print "/!\ * * * * * * * * * * alert state on * * * * * * * * * * /!\\"
+            print "/!\ * * * * * * * * * * * * alert state on * * * * * * * * * * * * /!\\"
             print "High traffic generated an alert - hits = {0}, triggered at {1}".format(hits_alert, triggered_time)
         else:
-            print " + + + + + + + + + + + + recovery + + + + + + + + + + + + "
+            print " + + + + + + + + + + + + + + recovery + + + + + + + + + + + + + + "
             print "Alert recovery at {0}".format(time.strftime("%m-%d %H:%M:%S"))
     dict_stats = get_stats(count, last_120_requests)
+    print "------------------------------------------------------------------------"
+    for i in xrange(2, 6):
+        print "hit(s) with status code " + str(i) + "xx : ", count[str(i) + "xx"]
+        del count[str(i) + "xx"]  # we then remove it in order to be able to call most_common on paths
     most_hits = count.most_common(3)  # we get the most common paths
-    print "--------------------------------------------------------------"
     print "most common hits last 10 seconds :"
     for (path, hits) in most_hits:
         print "    ", path, ":", hits, ("hits" if hits > 1 else "hit")
     print "total number of hits last 10 seconds : ", dict_stats['total requests']
     print "total number of hits last 2 minutes : ", dict_stats['total requests 120']
-    print "--------------------------------------------------------------"
+    print "------------------------------------------------------------------------"

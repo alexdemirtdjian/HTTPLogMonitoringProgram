@@ -47,6 +47,17 @@ def get_time(req):
     return t - int(datetime.datetime(*date[:6]).strftime('%s'))
 
 
+def get_status_code(req):
+    """
+    return the status code of the request
+    :param req: request
+    :return: int representing the status code
+    """
+    pos_begin = find_nth(req, '"', 2) + 2
+    pos_end = pos_begin + 3
+    return req[pos_begin:pos_end]
+
+
 def encode(l):
     """
     encode to utf8 the elem of the list
@@ -63,3 +74,4 @@ if __name__ == "__main__":
     print get_time('::1 - - [12/May/2015:11:40:06 +0200] "GET /angular/WeatherAngular/app/partials/forecast.html HTTP/1.1" 304 -')
     print logFileListener.counter_ten_seconds
     print get_path('::1 - - [12/May/2015:11:40:06 +0200] "GET /angular/WeatherAngular/app/partials/forecast.html HTTP/1.1" 304 -')
+    print get_status_code('::1 - - [12/May/2015:11:40:06 +0200] "GET /angular/WeatherAngular/app/partials/forecast.html HTTP/1.1" 304 -')
