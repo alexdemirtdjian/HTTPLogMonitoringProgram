@@ -70,6 +70,7 @@ fakeLogger :
 logFileListener :
 
 ```
+------------------------------------------------------------------------
 /!\ * * * * * * * * * * * * alert state on * * * * * * * * * * * * /!\
 High traffic generated an alert - hits = 23, triggered at 05-15 16:25:57
 ------------------------------------------------------------------------
@@ -95,7 +96,6 @@ most common hits last 10 seconds :
      message : 1 hit
 total number of hits last 10 seconds :  6
 total number of hits last 2 minutes :  31
-------------------------------------------------------------------------
 ------------------------------------------------------------------------
  + + + + + + + + + + + + + + recovery + + + + + + + + + + + + + +
 Alert recovery at 05-15 16:28:17
@@ -150,6 +150,19 @@ To manage properly the dependency we will set up a virtualenvironement
 
 * install all the requirements for the project
 `pip install -r requirements.txt`
+
+* finally edit the access_log path in LogMonitoring/configMonitoring.py`
+
+
+Launching the program :
+----------------------
+
+* to launch the program simply run on a terminal
+`./launch_monitoring`
+It will open a new screen with the program inside
+
+* To populate the access_log file with fake logs, run :
+`./launch_fakeLogger`
 
 
 Possible improvements :
