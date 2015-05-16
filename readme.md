@@ -134,24 +134,11 @@ Installing the program :
 ------------------------
 To manage properly the dependency we will set up a virtualenvironement
 
-* install python 2.7 on your machine (/!\ it won't work on python version <= 2.6 since it uses collections.Counter( ) )
+* install python 2.7 on your machine (/!\ it won't work on python version <= 2.6 
+since it uses collections.Counter( ) )
 
-* install pip
-`easy_install pip`
-
-* install virtualenv
-`pip install virtualenv`
-
-* create a virtual environment dedicated to the project
-`virtualenv env_log_monitoring`
-
-* to enter the virtual env type to quit the virtual env type just deactivate
-`source env_log_monitoring/bin/activate`
-
-* install all the requirements for the project
-`pip install -r requirements.txt`
-
-* finally edit the access_log path in LogMonitoring/configMonitoring.py`
+* finally edit the configuration file `LogMonitoring/configMonitoring.py`
+with the correct path of the access_log and the threshold
 
 
 Launching the program :

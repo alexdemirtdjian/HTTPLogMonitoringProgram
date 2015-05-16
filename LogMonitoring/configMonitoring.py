@@ -1,5 +1,11 @@
 __author__ = 'alexandre'
 
+from path import path
 
-threshold = 40  # this is the threshold at which the alert will be triggered
-log_path = "../FakeLogger/access_log"  # this is the path of the logging file (absolute or relative to LogMonitoring folder)
+# this is the threshold at which the alert will be triggered
+# change it for your need
+threshold = 40
+
+# this is the path of the access_log file
+# change it to the real access_log file
+log_path = path('access_log').abspath()
